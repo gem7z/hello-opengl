@@ -1,18 +1,146 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# ============================================================
+# IDEs
+# ============================================================
 
-# Other files and folders
-.settings/
+.idea/
+.vscode/
+.vs/
+
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# CLion / JetBrains
+cmake-build-*/
+
+
+# ============================================================
+# CMake output
+# ============================================================
+
+build/
+out/
+_build/
+_builds/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+CTestTestfile.cmake
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+_deps/
+
+# CMake user-local files
+CMakeLists.txt.user
+CMakeUserPresets.json
+
+
+# ============================================================
+# Native build system files
+# ============================================================
+
+Makefile
+*.make
+*.ninja
+.ninja_deps
+.ninja_log
+rules.ninja
+build.ninja
+
+
+# ============================================================
+# Compiler & link output
+# ============================================================
+
+# Object files
+*.o
+*.obj
+*.lo
+*.slo
+
+# Dependency files
+*.d
+*.dd
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Static libraries
+*.a
+*.lib
+*.la
+*.lai
+
+# Dynamic/shared libraries
+*.so
+*.dylib
+*.dll
 
 # Executables
-*.swf
-*.air
-*.ipa
-*.apk
+*.exe
+*.out
+*.app
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+
+# ============================================================
+# Windows MSVC build artifacts
+# ============================================================
+
+*.pdb
+*.ilk
+*.idb
+*.exp
+*.iobj
+*.ipdb
+*.tlog
+*.lastbuildstate
+*.recipe
+*.VC.db
+*.VC.opendb
+*.aps
+*.res
+
+
+# ============================================================
+# MinGW / GCC / Clang artifacts
+# ============================================================
+
+*.gcno
+*.gcda
+*.gcov
+*.profraw
+*.profdata
+
+
+# ============================================================
+# Debug / crash / log files
+# ============================================================
+
+*.log
+*.stackdump
+*.dmp
+
+
+# ============================================================
+# OS junk
+# ============================================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
