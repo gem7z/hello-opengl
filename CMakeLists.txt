@@ -19,9 +19,40 @@ include(ProjectWarnings)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# ------------------------------------------------------------
+# Output directories
+# ------------------------------------------------------------
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+
+foreach (CONFIG_TYPE DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONFIG_TYPE} "${CMAKE_BINARY_DIR}/bin")
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONFIG_TYPE} "${CMAKE_BINARY_DIR}/bin")
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONFIG_TYPE} "${CMAKE_BINARY_DIR}/bin")
+endforeach ()
+
+# ------------------------------------------------------------
+# Project source files
+# ------------------------------------------------------------
+
+file(GLOB_RECURSE HELLO_OPENGL_SOURCES
+        CONFIGURE_DEPENDS
+        "${PROJECT_SOURCE_DIR}/src/*.cpp"
+)
+
+file(GLOB_RECURSE HELLO_OPENGL_HEADERS
+        CONFIGURE_DEPENDS
+        "${PROJECT_SOURCE_DIR}/include/*.hpp"
+)
+
+if (NOT HELLO_OPENGL_SOURCES)
+    message(FATAL_ERROR "No .cpp source files found in ${PROJECT_SOURCE_DIR}/src")
+endif ()
+
+source_group(TREE "${PROJECT_SOURCE_DIR}/src" PREFIX "Source Files" FILES ${HELLO_OPENGL_SOURCES})
+source_group(TREE "${PROJECT_SOURCE_DIR}/include" PREFIX "Header Files" FILES ${HELLO_OPENGL_HEADERS})
 
 # ------------------------------------------------------------
 # GLFW
@@ -63,7 +94,13 @@ set_target_properties(glad
 # ------------------------------------------------------------
 
 add_executable(hello-opengl
-        src/main.cpp
+        ${HELLO_OPENGL_SOURCES}
+        ${HELLO_OPENGL_HEADERS}
+)
+
+target_include_directories(hello-opengl
+        PRIVATE
+        "${PROJECT_SOURCE_DIR}/include"
 )
 
 target_compile_features(hello-opengl
